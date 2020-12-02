@@ -108,7 +108,7 @@ def getBoxLocation(x, y): # Done!
         return (x_max, y_dist)
     #If at y boundary, drop a box at y bound and current x
     if (y >= y_max - offset):
-        return (y_max, x_dist)
+        return (x_dist, y_max)
     
     return
 
