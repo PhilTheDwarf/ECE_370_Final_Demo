@@ -9,12 +9,12 @@ rosrun gazebo_ros spawn_model -file model.sdf -sdf -x 0 -y 0 -z 1 -model rob_0
     <!-- =============== LINKS =============== -->
 
     <link name = "chassis">
-        <pose>-0.1 0 0.1 0 0 0</pose>
+        <pose>0 0 0.1 0 0 0</pose>
 
         <collision name = "col_body">
             <geometry>
                 <box>
-                    <size>0.5 0.75 0.1</size>
+                    <size>0.8 0.2 0.1</size>
                 </box>
             </geometry>
         </collision>
@@ -22,7 +22,7 @@ rosrun gazebo_ros spawn_model -file model.sdf -sdf -x 0 -y 0 -z 1 -model rob_0
         <visual name = "vis_body">
             <geometry>
                 <box>
-                    <size>0.5 0.75 0.1</size>
+                    <size>0.8 0.2 0.1</size>
                 </box>
             </geometry>
         </visual>
@@ -72,18 +72,15 @@ rosrun gazebo_ros spawn_model -file model.sdf -sdf -x 0 -y 0 -z 1 -model rob_0
 
 
 
-
-
-
         <!--front left wheel-->
 
             <link name = "fl_wheel">
-                <pose>0.18 0.44 0.1 0 1.5707 1.5707</pose>
+                <pose>0.5 0.45 0.1 0 1.5707 1.5707</pose>
                 <collision name = "col_l_wheel">
                     <geometry>
                         <cylinder>
-                            <radius>0.23</radius>
-                            <length>0.1</length>
+                            <radius>0.24</radius>
+                            <length>0.05</length>
                         </cylinder>
                     </geometry>
                     <surface>
@@ -101,8 +98,8 @@ rosrun gazebo_ros spawn_model -file model.sdf -sdf -x 0 -y 0 -z 1 -model rob_0
                 <visual name = "vis_l_wheel">
                     <geometry>
                         <cylinder>
-                            <radius>0.23</radius>
-                            <length>0.1</length>
+                            <radius>0.24</radius>
+                            <length>0.05</length>
                         </cylinder>
                     </geometry>
                 </visual>
@@ -111,12 +108,12 @@ rosrun gazebo_ros spawn_model -file model.sdf -sdf -x 0 -y 0 -z 1 -model rob_0
         <!--back left wheel-->
 
             <link name = "bl_wheel">
-                <pose>-0.35 0.44 0.1 0 1.5707 1.5707</pose>
+                <pose>-0.25 0.45 0.1 0 1.5707 1.5707</pose>
                 <collision name = "col_l_wheel">
                     <geometry>
                         <cylinder>
-                            <radius>0.22</radius>
-                            <length>0.1</length>
+                            <radius>0.24</radius>
+                            <length>0.05</length>
                         </cylinder>
                     </geometry>
                     <surface>
@@ -134,8 +131,8 @@ rosrun gazebo_ros spawn_model -file model.sdf -sdf -x 0 -y 0 -z 1 -model rob_0
                 <visual name = "vis_l_wheel">
                     <geometry>
                         <cylinder>
-                            <radius>0.22</radius>
-                            <length>0.1</length>
+                            <radius>0.24</radius>
+                            <length>0.05</length>
                         </cylinder>
                     </geometry>
                 </visual>
@@ -143,15 +140,15 @@ rosrun gazebo_ros spawn_model -file model.sdf -sdf -x 0 -y 0 -z 1 -model rob_0
             
 
 
-        <!--front right wheel-->
+        <!--right wheel-->
 
             <link name = "fr_wheel">
-                <pose>0.18 -0.44 0.1 0 1.5707 1.5707</pose>
+                <pose>0.25 -0.45 0.1 0 1.5707 1.5707</pose>
                 <collision name = "col_r_wheel">
                     <geometry>
                         <cylinder>
-                            <radius>0.23</radius>
-                            <length>0.1</length>
+                            <radius>0.24</radius>
+                            <length>0.05</length>
                         </cylinder>
                     </geometry>
                     <surface>
@@ -169,22 +166,22 @@ rosrun gazebo_ros spawn_model -file model.sdf -sdf -x 0 -y 0 -z 1 -model rob_0
                 <visual name = "vis_r_wheel">
                     <geometry>
                         <cylinder>
-                            <radius>0.23</radius>
-                            <length>0.1</length>
+                            <radius>0.24</radius>
+                            <length>0.05</length>
                         </cylinder>
                     </geometry>
                 </visual>
             </link>
 
-        <!--back right wheel-->
+        <!--right wheel-->
 
             <link name = "br_wheel">
-                <pose>-0.35 -0.44 0.1 0 1.5707 1.5707</pose>
+                <pose>-0.25 -0.45 0.1 0 1.5707 1.5707</pose>
                 <collision name = "col_r_wheel">
                     <geometry>
                         <cylinder>
-                            <radius>0.22</radius>
-                            <length>0.1</length>
+                            <radius>0.24</radius>
+                            <length>0.05</length>
                         </cylinder>
                     </geometry>
                     <surface>
@@ -202,15 +199,12 @@ rosrun gazebo_ros spawn_model -file model.sdf -sdf -x 0 -y 0 -z 1 -model rob_0
                 <visual name = "vis_r_wheel">
                     <geometry>
                         <cylinder>
-                            <radius>0.22</radius>
-                            <length>0.1</length>
+                            <radius>0.24</radius>
+                            <length>0.05</length>
                         </cylinder>
                     </geometry>
                 </visual>
             </link>
-
-
-
 
 
 
@@ -244,22 +238,9 @@ rosrun gazebo_ros spawn_model -file model.sdf -sdf -x 0 -y 0 -z 1 -model rob_0
         </joint>
 
         
-        <joint type = "revolute" name = "hinge_fr_wheel">
+        <joint type = "revolute" name = "hinge_r_wheel">
             <pose>0 0 0.03 0 0 0</pose>
-            <child>fr_wheel</child>
-            <parent> chassis </parent>
-            <axis>
-                <xyz> 0 1 0 </xyz>
-            </axis>
-            <dynamics>
-                <friction>100.0</friction>
-                <spring_stiffness>0.1</spring_stiffness>
-            </dynamics>
-        </joint>
-
-        <joint type = "revolute" name = "hinge_br_wheel">
-            <pose>0 0 0.03 0 0 0</pose>
-            <child>br_wheel</child>
+            <child>r_wheel</child>
             <parent> chassis </parent>
             <axis>
                 <xyz> 0 1 0 </xyz>

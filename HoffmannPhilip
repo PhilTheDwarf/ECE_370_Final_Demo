@@ -1,0 +1,111 @@
+#!/usr/bin/env bash
+
+echo Test directory and bin - change these before release!
+INSTALL_DIR=/home/user/catkin_ws/TMP/etc
+PROJECT_NAME=HoffmannPhilip
+INSTALL_BIN=/home/user/catkin_ws/TMP/bin/
+BIN_NAME=HoffmannPhilip
+#export PATH="$PATH:$INSTALL_BIN"
+
+Install()
+{
+# make folder for install
+mkdir -p $INSTALL_DIR/$PROJECT_NAME
+mkdir -p $INSTALL_BIN
+
+# put bin into bin directory
+cp $BIN_NAME $INSTALL_BIN/
+
+#put all install files in etc
+cp -r * $INSTALL_DIR/$PROJECT_NAME/
+
+# add to path
+#echo $INSTALL_BIN # Not exporting?
+export PATH=$PATH:$INSTALL_BIN
+#echo Path is now $PATH
+}
+
+Uninstall()
+{
+    rm -r $INSTALL_DIR/$PROJECT_NAME
+    rm -r $INSTALL_BIN/$BIN_NAME
+}
+
+Start()
+{
+    cat "1" > /tmp/$PROJECT_NAME
+    cd $INSTALL_DIR/$PROJECT_NAME
+    echo $INSTALL_DIR
+    echo $PROJECT_NAME
+    ./startDemo.sh
+
+    #./loadRobot.sh
+    #echo "==== Robot Loaded! ===="
+    #if [ -z "$2" ]
+    #then
+    #    echo "No box dropped"
+    #    exit 0
+    #fi
+    #if [ $2 -gt 0 ] # greater than
+    #then
+    #    cd src
+    #    ./drop_box.sh 2 2 5
+    #    cd ..
+    #    echo "==== dropping a box! ===="
+    #fi
+}
+
+Stop()
+{
+    ./rmBoxes.sh
+    ./rmRobot.sh 
+    cat "0" > /tmp/$PROJECT_NAME
+}
+
+Status()
+{
+    echo $(cat /tmp/$PROJECT_NAME)
+}
+
+Help()
+{
+    echo ' '
+    echo ' '
+    echo '---------------------------------------'
+    echo '---------- ECE370 Demo Final ----------'
+    echo '---------------------------------------'
+    echo 'install               : Install the program'
+    echo 'help                  : Shows this file and a description'
+    echo 'start                 : Starts the program'
+    echo 'uninstall             : Removes this program'
+}
+
+# Call the function (needs to be below function definition)
+case $1 in
+'install')
+    Install
+    ;;
+'uninstall')
+    Uninstall
+    ;;
+'start')
+    Start $@
+    ;;
+'stop')
+    Stop
+    ;;
+'status')
+    Status
+    ;;
+'help')
+    Help
+    echo 'A short program written by Philip Hoffmann! Loads an obstacle course environment'
+    echo 'and a little 4-wheel differential drive robot which can be driven around via'
+    echo 'keyboard input.'
+    ;;
+*)
+    Help
+    ;;
+esac
+echo Exiting...
+#exit 0
