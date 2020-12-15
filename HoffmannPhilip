@@ -1,9 +1,11 @@
 #!/usr/bin/env bash
 
 echo Test directory and bin - change these before release!
-INSTALL_DIR=/home/user/catkin_ws/TMP/etc
+#INSTALL_DIR=/home/user/catkin_ws/TMP/etc
+INSTALL_DIR=~/etc/
 PROJECT_NAME=HoffmannPhilip
-INSTALL_BIN=/home/user/catkin_ws/TMP/bin/
+#INSTALL_BIN=/home/user/catkin_ws/TMP/bin/
+INSTALL_BIN=~/bin/
 BIN_NAME=HoffmannPhilip
 #export PATH="$PATH:$INSTALL_BIN"
 
